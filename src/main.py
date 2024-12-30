@@ -4,10 +4,10 @@ import moviepy.editor as mpe
 
 def create_video_from_images(images_folder, output_video, fps=10, duration=10):
     images = sorted(os.listdir(images_folder))
- 
+    print(images)
     # create path to the input images
     img_path = os.path.join(images_folder, images[0])
-     
+    print(img_path)
     # load image
     frame = cv2.imread(img_path)
     # extract dimensions of the image
@@ -32,6 +32,7 @@ def create_video_from_images(images_folder, output_video, fps=10, duration=10):
     print(f"Video {output_video} created successfully")
 
 def add_audio():
+    print(f"Audio embedding started....")
     video_clip = mpe.VideoFileClip("./output/out.mp4")
     audio_clip = mpe.AudioFileClip("./audio/bgm.mp3")
     video_clip.audio = audio_clip.audio_loop(duration=video_clip.duration)
